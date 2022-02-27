@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab1_javafx.controllers.DialogLineController">
+   <children>
+      <Text layoutX="34.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Точка:" />
+      <Button layoutX="122.0" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#onClick" prefHeight="26.0" prefWidth="66.0" text="OK" />
+      <Text layoutX="107.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x" wrappingWidth="11.199987792968727" />
+      <TextField fx:id="pX" layoutX="122.0" layoutY="29.0" onAction="#pointX" prefHeight="26.0" prefWidth="33.0" />
+      <Text layoutX="188.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="y" wrappingWidth="11.199987792968727" />
+      <TextField fx:id="pY" layoutX="199.0" layoutY="29.0" onAction="#pointY" prefHeight="26.0" prefWidth="33.0" />
+   </children>
+</AnchorPane>

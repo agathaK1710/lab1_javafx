@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+
+<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab1_javafx.controllers.MainController">
+   <children>
+      <MenuBar>
+        <menus>
+            <Menu mnemonicParsing="false" onAction="#setCenter" text="Выбрать фигуру">
+               <items>
+                <MenuItem mnemonicParsing="false" onAction="#line" text="Линия" />
+                  <MenuItem mnemonicParsing="false" onAction="#segment" text="Отрезок" />
+                <MenuItem mnemonicParsing="false" onAction="#ray" text="Луч" />
+                  <MenuItem mnemonicParsing="false" onAction="#triangle" text="Треугольник" />
+                  <MenuItem mnemonicParsing="false" onAction="#rectangle" text="Прямоугольник" />
+                  <MenuItem mnemonicParsing="false" onAction="#circle" text="Круг" />
+                  <MenuItem mnemonicParsing="false" onAction="#rhombus" text="Ромб" />
+                  <MenuItem mnemonicParsing="false" onAction="#ellipse" text="Эллипс" />
+                  <MenuItem mnemonicParsing="false" onAction="#polygon" text="Многоугольник" />
+                  <Menu mnemonicParsing="false" text="Правильный многоугольник">
+                     <items>
+                      <MenuItem mnemonicParsing="false" onAction="#eqTriangle" text="Равносторонний треугольник" />
+                        <MenuItem mnemonicParsing="false" onAction="#square" text="Квадрат" />
+                        <MenuItem mnemonicParsing="false" onAction="#pentagon" text="Пятиугольник" />
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <ColorPicker fx:id="myColorPicker" onAction="#changeColor">
+                     <value>
+                        <Color />
+                     </value></ColorPicker>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false" text="                 Центр фигуры:" />
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <TextField fx:id="cX" prefHeight="20.0" prefWidth="52.0" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <TextField fx:id="cY" prefHeight="20.0" prefWidth="52.0" />
+               </graphic>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</VBox>
