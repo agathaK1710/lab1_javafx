@@ -1,7 +1,6 @@
 package com.example.lab1_javafx.controllers;
 
 import com.example.lab1_javafx.Main;
-import com.example.lab1_javafx.figures.MyLine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +11,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class DialogLineController {
+import static com.example.lab1_javafx.figures.MyLine.setPoint;
 
+public class DialogLineController {
     @FXML
     private TextField pX;
 
@@ -23,10 +23,12 @@ public class DialogLineController {
     @FXML
     void onClick(MouseEvent event) throws IOException {
         if(!pX.getText().isEmpty() && !pY.getText().isEmpty() &&  MainController.getStage() != null) {
-            MyLine.point.x = Double.parseDouble(pX.getText());
-            MyLine.point.y = Double.parseDouble(pY.getText());
+            setPoint(Double.parseDouble(pX.getText()), Double.parseDouble(pY.getText()));
             MainController.getStage().close();
-        } else error();
+            MainController.drawLine();
+        } else {
+            error();
+        }
     }
 
     @FXML

@@ -8,15 +8,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainController {
-    private static Stage stage = new Stage();
+    private static final Stage stage = new Stage();
+    private static boolean setCenterFlag = false;
+    private static Color color;
+
     @FXML
     private TextField cX;
 
@@ -24,14 +28,18 @@ public class MainController {
     private TextField cY;
 
     @FXML
-    private VBox root;
-
-    @FXML
     private ColorPicker myColorPicker;
 
     @FXML
+    private Canvas canvas;
+
+    public void createGrid(){
+        Figure.setGC(canvas.getGraphicsContext2D());
+    }
+
+    @FXML
     void changeColor(ActionEvent event) {
-        Figure.setColor(myColorPicker.getValue());
+       color = myColorPicker.getValue();
     }
 
     @FXML
@@ -49,8 +57,9 @@ public class MainController {
     }
 
     @FXML
-    public void line(ActionEvent event) throws IOException {
-        if(setCenter(new ActionEvent())) {
+     void line(ActionEvent event) throws IOException {
+        setCenter();
+        if(setCenterFlag) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("lineDialog.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 300, 115);
             stage.setTitle("Выбрать параметры");
@@ -58,11 +67,14 @@ public class MainController {
             stage.show();
         } else {
             DialogLineController.error();
-            MyLine line = new MyLine(Figure.getTheCenter(), new Coordinates(100, 100));
-            line.draw();
-            root.getChildren().add(line.line);
         }
     }
+
+    public static void drawLine(){
+        MyLine line = new MyLine(Figure.getTheCenter(), MyLine.getPoint(), color);
+        line.draw();
+    }
+
 
     @FXML
     void pentagon(ActionEvent event) {
@@ -104,18 +116,16 @@ public class MainController {
 
     }
 
-    @FXML
-    boolean setCenter(ActionEvent event) throws IOException {
-        if (!cX.getText().isEmpty() && !cY.getText().isEmpty()){
+    private void setCenter() {
+        if (!cX.getText().isEmpty() && !cY.getText().isEmpty()) {
             Figure.setTheCenter(new Coordinates(Double.parseDouble(cX.getText()), Double.parseDouble(cY.getText())));
-            return true;
+            setCenterFlag = true;
         } else {
-            return false;
+            setCenterFlag = false;
         }
     }
 
     public static Stage getStage(){
         return stage;
     }
-
 }

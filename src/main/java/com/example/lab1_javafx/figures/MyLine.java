@@ -1,33 +1,38 @@
 package com.example.lab1_javafx.figures;
 
+import com.example.lab1_javafx.Main;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
+import javafx.scene.paint.Paint;
 
 public class MyLine extends Figure {
-    public Line line;
-    public static Coordinates point;
+    public Color color;
+    public static Coordinates point = new Coordinates(0, 0);
 
-    public MyLine(Coordinates theCenter, Coordinates point) {
+    public MyLine(Coordinates theCenter, Coordinates point, Color color) {
         super(theCenter);
         MyLine.point = point;
+        this.color = color;
     }
 
     @Override
     public void draw() {
-        if (getTheCenter().y == point.y) {
-            line = new Line(0, getTheCenter().y, 1000, point.y);
-            return;
-        }
-        double x1 = (point.x * getTheCenter().y - getTheCenter().x * point.y) / (getTheCenter().y - point.y);
-        double x2 = (point.x * getTheCenter().y - getTheCenter().x * point.y + (getTheCenter().x - point.x) * 1000)
-                / (getTheCenter().y - point.y);
-        line = new Line(x1, 0, x2, 1000);
-        line.setStrokeWidth(3);
-        line.setStroke(Color.RED);
+        Figure.getGC().setStroke(color);
+        Figure.getGC().strokeLine(Figure.getTheCenter().x, Figure.getTheCenter().y, point.x, point.y);
     }
 
     @Override
     public void move() {
 
+    }
+
+    public static void setPoint(double x, double y){
+        point.x = x;
+        point.y = y;
+    }
+
+    public static Coordinates getPoint(){
+        return new Coordinates(point.x, point.y);
     }
 }
