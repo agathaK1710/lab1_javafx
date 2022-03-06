@@ -3,19 +3,16 @@ package com.example.lab1_javafx.figures;
 import javafx.scene.paint.Color;
 
 public class MyLine extends Figure {
-    public Color color;
-    public static Coordinates point = new Coordinates(0, 0);
+    private Coordinates point;
 
-    public MyLine(Coordinates theCenter, Coordinates point, Color color) {
-        super(theCenter);
-        MyLine.point = point;
-        this.color = color;
+    public MyLine(Coordinates theCenter, Color color) {
+        super(theCenter, color);
     }
 
     @Override
     public void draw() {
-        Figure.getGC().setStroke(color);
-        Figure.getGC().strokeLine(this.theCenter.x, this.theCenter.y, point.x, point.y);
+        getGC().setStroke(color);
+        getGC().strokeLine(this.theCenter.x, this.theCenter.y, point.x, point.y);
     }
 
     @Override
@@ -23,12 +20,11 @@ public class MyLine extends Figure {
 
     }
 
-    public static void setPoint(double x, double y){
-        point.x = x;
-        point.y = y;
+    public void setPoint(Coordinates point) {
+        this.point = point;
     }
 
-    public static Coordinates getPoint(){
-        return new Coordinates(point.x, point.y);
+    public  Coordinates getPoint(){
+        return new Coordinates(this.point.x, this.point.y);
     }
 }

@@ -4,6 +4,7 @@ import com.example.lab1_javafx.Main;
 import com.example.lab1_javafx.figures.Coordinates;
 import com.example.lab1_javafx.figures.Figure;
 import com.example.lab1_javafx.figures.MyLine;
+import com.example.lab1_javafx.figures.Polygon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,12 +68,13 @@ public class MainController {
             stage.setScene(scene);
             stage.show();
         } else {
-            DialogLineController.error();
+            error();
         }
     }
 
     public static void drawLine(){
-        MyLine line = new MyLine(center, MyLine.getPoint(), color);
+        MyLine line = new MyLine(center, color);
+        line.setPoint(DialogLineController.point);
         line.draw();
     }
 
@@ -83,8 +85,23 @@ public class MainController {
     }
 
     @FXML
-    void polygon(ActionEvent event) {
+    void polygon(ActionEvent event) throws  IOException{
+        setCenter();
+        if(setCenterFlag) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("polygonDialog.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 143);
+            stage.setTitle("Выбрать параметры");
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            error();
+        }
+    }
 
+    public static void drawPolygon(){
+        Polygon polygon = new Polygon(center, color);
+        polygon.setPoints(DialogPolygonController.polPoints);
+        polygon.draw();
     }
 
     @FXML
@@ -129,5 +146,14 @@ public class MainController {
 
     public static Stage getStage(){
         return stage;
+    }
+
+    public static void error() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("error.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 300, 75);
+        stage.setTitle("Ошибка!");
+        stage.setScene(scene);
+        stage.show();
     }
 }
