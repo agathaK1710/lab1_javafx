@@ -20,6 +20,7 @@ public class MainController {
     private static final Stage stage = new Stage();
     private static boolean setCenterFlag = false;
     private static Color color;
+    private static Coordinates center;
 
     @FXML
     private TextField cX;
@@ -71,7 +72,7 @@ public class MainController {
     }
 
     public static void drawLine(){
-        MyLine line = new MyLine(Figure.getTheCenter(), MyLine.getPoint(), color);
+        MyLine line = new MyLine(center, MyLine.getPoint(), color);
         line.draw();
     }
 
@@ -116,13 +117,14 @@ public class MainController {
 
     }
 
-    private void setCenter() {
+    private Coordinates setCenter() {
         if (!cX.getText().isEmpty() && !cY.getText().isEmpty()) {
-            Figure.setTheCenter(new Coordinates(Double.parseDouble(cX.getText()), Double.parseDouble(cY.getText())));
+            center = new Coordinates(Double.parseDouble(cX.getText()), Double.parseDouble(cY.getText()));
             setCenterFlag = true;
         } else {
             setCenterFlag = false;
         }
+        return center;
     }
 
     public static Stage getStage(){

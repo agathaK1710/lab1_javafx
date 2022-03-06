@@ -1,10 +1,6 @@
 package com.example.lab1_javafx.figures;
 
-import com.example.lab1_javafx.Main;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 public class MyLine extends Figure {
     public Color color;
@@ -19,7 +15,7 @@ public class MyLine extends Figure {
     @Override
     public void draw() {
         Figure.getGC().setStroke(color);
-        Figure.getGC().strokeLine(Figure.getTheCenter().x, Figure.getTheCenter().y, point.x, point.y);
+        Figure.getGC().strokeLine(this.theCenter.x, this.theCenter.y, point.x, point.y);
     }
 
     @Override

@@ -3,11 +3,11 @@ package com.example.lab1_javafx.figures;
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class Figure {
-    private static Coordinates theCenter;
+    protected Coordinates theCenter;
     private static GraphicsContext gc;
 
     public Figure(Coordinates theCenter) {
-        Figure.theCenter = theCenter;
+        this.theCenter = theCenter;
     }
 
     public abstract void draw();
@@ -18,13 +18,6 @@ public abstract class Figure {
         return theCenter;
     }
 
-    public static Coordinates getTheCenter() {
-        return theCenter;
-    }
-
-    public static void setTheCenter(Coordinates theCenter) {
-       Figure.theCenter = theCenter;
-    }
 
     public static GraphicsContext getGC(){
         return Figure.gc;
@@ -33,6 +26,8 @@ public abstract class Figure {
     public static void setGC(GraphicsContext gc){
         Figure.gc = gc;
     }
+
+
 }
 
 
