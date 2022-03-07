@@ -16,7 +16,7 @@ public abstract class Figure {
 
     public abstract void draw();
 
-    public abstract void move();
+    public abstract void move(Coordinates point);
 
     public Coordinates location() {
         return theCenter;

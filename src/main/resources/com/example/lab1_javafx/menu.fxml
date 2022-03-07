@@ -54,6 +54,6 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Canvas fx:id="canvas" height="366.0" width="601.0" />
+      <Canvas fx:id="canvas" height="600.0" width="800.0" />
    </children>
 </VBox>

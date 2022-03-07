@@ -23,7 +23,7 @@ public class Polygon extends Figure{
     }
 
     @Override
-    public void move() {
+    public void move(Coordinates point) {
 
     }
 

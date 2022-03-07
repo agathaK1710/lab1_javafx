@@ -16,8 +16,9 @@ public class MyLine extends Figure {
     }
 
     @Override
-    public void move() {
-
+    public void move(Coordinates point) {
+        this.theCenter.x = point.x;
+        this.theCenter.y = point.y;
     }
 
     public void setPoint(Coordinates point) {

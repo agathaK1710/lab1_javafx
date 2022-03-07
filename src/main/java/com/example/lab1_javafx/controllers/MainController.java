@@ -3,19 +3,24 @@ package com.example.lab1_javafx.controllers;
 import com.example.lab1_javafx.Main;
 import com.example.lab1_javafx.figures.*;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainController {
+    private static ArrayList<Figure> figures = new ArrayList<>();
     private static final Stage stage = new Stage();
+    public static Canvas canva;
     private static boolean setCenterFlag = false;
     private static Color color;
     private static Coordinates center;
@@ -34,7 +39,23 @@ public class MainController {
     private Canvas canvas;
 
     public void createGrid(){
+        canva = canvas;
         Figure.setGC(canvas.getGraphicsContext2D());
+        canva.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                double xPosition = mouseEvent.getSceneX();
+                double yPosition = mouseEvent.getSceneY();
+
+            }
+        });
+
+        canva.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+
+            }
+        });
     }
 
     @FXML
@@ -69,7 +90,7 @@ public class MainController {
     public static void drawEqTriangle(){
         EqTriangle triangle = new EqTriangle(center, color);
         triangle.setRadius(DialogRegularPolygonController.rad);
-        triangle.draw();
+        figures.add(triangle);
     }
 
     @FXML
@@ -89,7 +110,7 @@ public class MainController {
     public static void drawLine(){
         MyLine line = new MyLine(center, color);
         line.setPoint(DialogLineController.point);
-        line.draw();
+        figures.add(line);
     }
 
 
@@ -111,7 +132,7 @@ public class MainController {
     public static void drawPentagon(){
         Pentagon pentagon = new Pentagon(center, color);
         pentagon.setRadius(DialogRegularPolygonController.rad);
-        pentagon.draw();
+        figures.add(pentagon);
     }
 
     @FXML
@@ -131,7 +152,7 @@ public class MainController {
     public static void drawPolygon(){
         Polygon polygon = new Polygon(center, color);
         polygon.setPoints(DialogPolygonController.polPoints);
-        polygon.draw();
+        figures.add(polygon);
     }
 
     @FXML
@@ -172,7 +193,7 @@ public class MainController {
     public static void drawSquare(){
         Square square = new Square(center, color);
         square.setRadius(DialogRegularPolygonController.rad);
-        square.draw();
+        figures.add(square);
     }
 
 
@@ -203,5 +224,13 @@ public class MainController {
         stage.setTitle("Ошибка!");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static void repaint(Canvas canvas){
+        Figure.getGC().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        for(int i = 0; i < figures.size(); ++i){
+            figures.get(i).draw();
+        }
+        System.out.println(figures.size());
     }
 }

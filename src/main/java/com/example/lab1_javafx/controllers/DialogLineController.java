@@ -23,6 +23,7 @@ public class DialogLineController {
             point = new Coordinates(Double.parseDouble(pX.getText()), Double.parseDouble(pY.getText()));
             MainController.getStage().close();
             MainController.drawLine();
+            MainController.repaint(MainController.canva);
         } else {
             MainController.error();
         }

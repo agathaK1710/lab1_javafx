@@ -28,6 +28,7 @@ public class DialogRegularPolygonController {
                     MainController.drawPentagon();
                 }
             }
+            MainController.repaint(MainController.canva);
         }
         else {
             MainController.error();

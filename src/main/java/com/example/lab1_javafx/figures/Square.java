@@ -14,7 +14,7 @@ public class Square extends RegularPolygon{
     }
 
     @Override
-    public void move() {
-        super.move();
+    public void move(Coordinates point) {
+        super.move(point);
     }
 }

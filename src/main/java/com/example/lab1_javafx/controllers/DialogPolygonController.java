@@ -29,6 +29,7 @@ public class DialogPolygonController {
             polPoints = polygonPoints;
             MainController.getStage().close();
             MainController.drawPolygon();
+            MainController.repaint(MainController.canva);
         } else {
             MainController.error();
         }

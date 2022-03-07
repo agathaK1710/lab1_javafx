@@ -29,8 +29,8 @@ public class RegularPolygon extends Polygon {
     }
 
     @Override
-    public void move() {
-
+    public void move(Coordinates point) {
+        super.move(point);
     }
 
     public void setNumOfSides(int numOfSides) {
