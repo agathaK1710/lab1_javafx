@@ -15,7 +15,7 @@ public class Polygon extends Figure{
     public void draw() {
         getGC().beginPath();
         getGC().moveTo(this.theCenter.x, this.theCenter.y);
-        for(int i = 1; i < points.size(); ++i){
+        for(int i = 0; i < points.size(); ++i){
             getGC().lineTo(this.points.get(i).x, this.points.get(i).y);
         }
         getGC().setFill(color);

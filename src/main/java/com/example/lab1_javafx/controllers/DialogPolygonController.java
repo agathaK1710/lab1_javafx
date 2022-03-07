@@ -18,19 +18,18 @@ public class DialogPolygonController {
 
     @FXML
     void onClick(ActionEvent event) throws IOException {
-        if (!points.getText().isEmpty()){
+        if (!points.getText().isEmpty()) {
             ArrayList<Coordinates> polygonPoints = new ArrayList<>();
             String[] array = points.getText().split(" ");
-            for (int i = 0; i + 1 < array.length; ++i) {
+            for (int i = 0; i + 1 < array.length; i += 2) {
                 double x = Double.parseDouble(array[i].trim());
-                double y = Double.parseDouble(array[i+1].trim());
+                double y = Double.parseDouble(array[i + 1].trim());
                 polygonPoints.add(new Coordinates(x, y));
             }
             polPoints = polygonPoints;
             MainController.getStage().close();
             MainController.drawPolygon();
-        }
-        else {
+        } else {
             MainController.error();
         }
     }

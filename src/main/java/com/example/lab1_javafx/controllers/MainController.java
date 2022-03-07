@@ -1,10 +1,7 @@
 package com.example.lab1_javafx.controllers;
 
 import com.example.lab1_javafx.Main;
-import com.example.lab1_javafx.figures.Coordinates;
-import com.example.lab1_javafx.figures.Figure;
-import com.example.lab1_javafx.figures.MyLine;
-import com.example.lab1_javafx.figures.Polygon;
+import com.example.lab1_javafx.figures.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +19,7 @@ public class MainController {
     private static boolean setCenterFlag = false;
     private static Color color;
     private static Coordinates center;
+    public static String figure;
 
     @FXML
     private TextField cX;
@@ -54,8 +52,24 @@ public class MainController {
     }
 
     @FXML
-    void eqTriangle(ActionEvent event) {
+    void eqTriangle(ActionEvent event) throws IOException{
+        setCenter();
+        if(setCenterFlag) {
+            figure = "eqTriangle";
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("regularPolygonDialog.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 350, 95);
+            stage.setTitle("Выбрать параметры");
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            error();
+        }
+    }
 
+    public static void drawEqTriangle(){
+        EqTriangle triangle = new EqTriangle(center, color);
+        triangle.setRadius(DialogRegularPolygonController.rad);
+        triangle.draw();
     }
 
     @FXML
@@ -80,8 +94,24 @@ public class MainController {
 
 
     @FXML
-    void pentagon(ActionEvent event) {
+    void pentagon(ActionEvent event) throws IOException {
+        setCenter();
+        if(setCenterFlag) {
+            figure = "pentagon";
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("regularPolygonDialog.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 350, 95);
+            stage.setTitle("Выбрать параметры");
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            error();
+        }
+    }
 
+    public static void drawPentagon(){
+        Pentagon pentagon = new Pentagon(center, color);
+        pentagon.setRadius(DialogRegularPolygonController.rad);
+        pentagon.draw();
     }
 
     @FXML
@@ -125,9 +155,27 @@ public class MainController {
     }
 
     @FXML
-    void square(ActionEvent event) {
-
+    void square(ActionEvent event) throws IOException {
+        setCenter();
+        if(setCenterFlag) {
+            figure = "square";
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("regularPolygonDialog.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 350, 95);
+            stage.setTitle("Выбрать параметры");
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            error();
+        }
     }
+
+    public static void drawSquare(){
+        Square square = new Square(center, color);
+        square.setRadius(DialogRegularPolygonController.rad);
+        square.draw();
+    }
+
+
 
     @FXML
     void triangle(ActionEvent event) {
