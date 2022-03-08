@@ -22,20 +22,14 @@ public class DialogLineController {
         if(!pX.getText().isEmpty() && !pY.getText().isEmpty() &&  MainController.getStage() != null) {
             point = new Coordinates(Double.parseDouble(pX.getText()), Double.parseDouble(pY.getText()));
             MainController.getStage().close();
-            MainController.drawLine();
+            switch (MainController.figure) {
+                case "line" -> MainController.drawLine();
+                case "ray" -> MainController.drawRay();
+                case "segment" -> MainController.drawSegment();
+            }
             MainController.repaint(MainController.canva);
         } else {
             MainController.error();
         }
-    }
-
-    @FXML
-    void pointX(ActionEvent event) {
-
-    }
-
-    @FXML
-    void pointY(ActionEvent event) {
-
     }
 }

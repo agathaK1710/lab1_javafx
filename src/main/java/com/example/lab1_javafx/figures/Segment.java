@@ -2,10 +2,10 @@ package com.example.lab1_javafx.figures;
 
 import javafx.scene.paint.Color;
 
-public class MyLine extends Figure {
-    private Coordinates point;
+public class Segment extends Figure{
+    protected Coordinates point;
 
-    public MyLine(Coordinates theCenter, Color color) {
+    public Segment(Coordinates theCenter, Color color) {
         super(theCenter, color);
     }
 
@@ -17,8 +17,11 @@ public class MyLine extends Figure {
 
     @Override
     public void move(Coordinates point) {
-        this.theCenter.x = point.x;
-        this.theCenter.y = point.y;
+    }
+
+    @Override
+    public boolean contains(Coordinates point) {
+        return false;
     }
 
     public void setPoint(Coordinates point) {

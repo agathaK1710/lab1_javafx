@@ -16,12 +16,15 @@ public abstract class Figure {
 
     public abstract void draw();
 
-    public abstract void move(Coordinates point);
+    public void move(Coordinates point) {
+        this.theCenter = point;
+    };
 
     public Coordinates location() {
         return theCenter;
     }
 
+    public abstract boolean contains(Coordinates point);
 
     public static GraphicsContext getGC(){
         return Figure.gc;

@@ -1,13 +1,11 @@
 package com.example.lab1_javafx.controllers;
 
 import com.example.lab1_javafx.figures.Coordinates;
-import com.example.lab1_javafx.figures.Polygon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DialogPolygonController {
@@ -28,7 +26,10 @@ public class DialogPolygonController {
             }
             polPoints = polygonPoints;
             MainController.getStage().close();
-            MainController.drawPolygon();
+            switch (MainController.figure){
+                case "triangle" -> MainController.drawTriangle();
+                case "polygon" -> MainController.drawPolygon();
+            }
             MainController.repaint(MainController.canva);
         } else {
             MainController.error();
