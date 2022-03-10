@@ -33,8 +33,6 @@ public abstract class Figure {
     public static void setGC(GraphicsContext gc){
         Figure.gc = gc;
     }
-
-
 }
 
 

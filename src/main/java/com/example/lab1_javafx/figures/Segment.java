@@ -17,6 +17,7 @@ public class Segment extends Figure{
 
     @Override
     public void move(Coordinates point) {
+        super.move(point);
     }
 
     @Override

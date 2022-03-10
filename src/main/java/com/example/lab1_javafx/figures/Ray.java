@@ -23,4 +23,9 @@ public class Ray extends Segment{
         }
         getGC().strokeLine(x1,y1,x2,y2);
     }
+
+    @Override
+    public void move(Coordinates point) {
+        super.move(point);
+    }
 }

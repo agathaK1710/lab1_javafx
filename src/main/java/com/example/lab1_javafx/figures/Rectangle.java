@@ -20,4 +20,11 @@ public class Rectangle extends Polygon{
 
         setPoints(p);
     }
+
+    @Override
+    public void move(Coordinates point) {
+        super.move(point);
+    }
+
+
 }

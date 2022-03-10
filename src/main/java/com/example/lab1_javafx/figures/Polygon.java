@@ -23,13 +23,10 @@ public class Polygon extends Figure{
     }
 
     @Override
-    public void move(Coordinates point) {
-    }
-
-    @Override
     public boolean contains(Coordinates point) {
         return false;
     }
+
 
     public void setPoints(ArrayList<Coordinates> points) {
         this.points = points;

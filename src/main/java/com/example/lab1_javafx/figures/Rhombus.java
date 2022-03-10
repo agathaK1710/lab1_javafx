@@ -18,4 +18,5 @@ public class Rhombus extends Polygon{
         points.add(new Coordinates(theCenter.x, theCenter.y-d1/2));
         setPoints(points);
     }
+
 }
